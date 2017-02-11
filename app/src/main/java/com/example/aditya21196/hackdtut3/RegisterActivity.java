@@ -18,6 +18,15 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import static com.example.aditya21196.hackdtut3.MainActivity._Age;
+import static com.example.aditya21196.hackdtut3.MainActivity._PhnNo;
+import static com.example.aditya21196.hackdtut3.MainActivity._bloodChoice;
+import static com.example.aditya21196.hackdtut3.MainActivity._email;
+import static com.example.aditya21196.hackdtut3.MainActivity._name;
+import static com.example.aditya21196.hackdtut3.MainActivity._rBool;
+import static com.example.aditya21196.hackdtut3.MainActivity._sex;
+import static com.example.aditya21196.hackdtut3.MainActivity._state;
+
 public class RegisterActivity extends AppCompatActivity {
 
     EditText etName;
@@ -27,18 +36,14 @@ public class RegisterActivity extends AppCompatActivity {
     EditText etPhnNo;
     Button bRegister;
 
+    String password;
+
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
+    FirebaseUser user;
 
-    String email;
-    String password;
+
     int sexChoice;
-    String bloodChoice;
-    String Age;
-    String sex;
-    String name;
-    String PhnNo;
-    String state;
 
     Spinner bloodGroupSpinner;
 
@@ -106,10 +111,9 @@ public class RegisterActivity extends AppCompatActivity {
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
+                user = firebaseAuth.getCurrentUser();
                 if (user != null) {
-                    // User is signed in
-                    //Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+
                 } else {
                     // User is signed out
                     //Log.d(TAG, "onAuthStateChanged:signed_out");
@@ -150,22 +154,22 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void registerUser() {
-
-        name=etName.getText().toString();
-        email = etEmailR.getText().toString();
-        PhnNo = etPhnNo.getText().toString();
+        _rBool=true;
+        _name=etName.getText().toString();
+        _email = etEmailR.getText().toString();
+        _PhnNo = etPhnNo.getText().toString();
         password = etPwdR.getText().toString();
-        Age=etAge.getText().toString();
-        state = acView.getText().toString();
-        bloodChoice = String.valueOf(bloodGroupSpinner.getSelectedItem());
+        _Age=etAge.getText().toString();
+        _state = acView.getText().toString();
+        _bloodChoice = String.valueOf(bloodGroupSpinner.getSelectedItem());
         switch (sexChoice) {
             case R.id.male:
                 //some code
-                sex="male";
+                _sex="male";
                 break;
             case R.id.female:
                 //some code
-                sex="female";
+                _sex="female";
                 break;
         }
 
@@ -173,7 +177,7 @@ public class RegisterActivity extends AppCompatActivity {
 
 
 
-        mAuth.createUserWithEmailAndPassword(email, password)
+        mAuth.createUserWithEmailAndPassword(_email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
