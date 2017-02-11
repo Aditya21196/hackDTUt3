@@ -177,7 +177,7 @@ public class MapActivity extends AppCompatActivity {
 
         if(_tBlood){
 
-            //retreive db and
+            //retreive db and show markers
 
         }
 
