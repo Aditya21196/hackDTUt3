@@ -31,11 +31,41 @@ public class UserAreaActivity extends AppCompatActivity {
     private Firebase mRef;
     String UID;
 
+    View donate;
+    View request;
+    View profile;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_area);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        donate=(View)findViewById(R.id.bDonate);
+        request=(View)findViewById(R.id.bRequest);
+        profile=(View)findViewById(R.id.bUpdate);
+
+        donate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        request.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(UserAreaActivity.this,Request.class));
+            }
+        });
+
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
         if(_rBool){
             if (user != null) {
                 //code to store stuff in db and use values here
@@ -69,6 +99,10 @@ public class UserAreaActivity extends AppCompatActivity {
                     _sex=map.get("Sex");
                     _name=map.get("Name");
                 }
+
+
+
+
 
                 @Override
                 public void onCancelled(FirebaseError firebaseError) {
