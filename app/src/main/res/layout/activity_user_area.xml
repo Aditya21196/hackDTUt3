@@ -13,6 +13,47 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.aditya21196.hackdtut3.UserAreaActivity">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="How was your experience with the app as a Blood Donor?"
+        android:textSize="20sp"
+        android:padding="5dp"
+        android:layout_marginBottom="5dp"
+        android:id="@+id/t1"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="-Always wanted to save lives. This helped me achive this. I have already donated 4 times-Panit Patel(Blood Donor, Gujrat)
+-Ever since my husband passed away due to very few donations, I have been honoring him by donating. - Dolly Sharma (Blood donor)"
+        android:textSize="18sp"
+        android:padding="8dp"
+        android:layout_below="@id/t1"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/t2" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="How was your experience with the app as a Sperm Donor?"
+        android:textSize="20sp"
+        android:padding="5dp"
+        android:layout_below="@id/t2"
+        android:layout_marginBottom="5dp"
+        android:id="@+id/t3"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="-Have never been so proud to be a sperm donor. Helped create 20+ happy families and counting. - Vickey Malhotra (Sperm donor)
+-My moto of life is simple. Love and be loved. Life Link is the best app I have ever used. - Jhonny Sins (Sperm Donor)."
+        android:textSize="18sp"
+        android:padding="8dp"
+        android:layout_below="@id/t3"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/t4" />
+
     <Button
         android:text="Log Out"
         android:layout_width="wrap_content"

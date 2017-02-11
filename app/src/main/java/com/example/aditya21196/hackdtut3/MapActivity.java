@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import static com.example.aditya21196.hackdtut3.MainActivity._state;
+import static com.example.aditya21196.hackdtut3.MainActivity._tBlood;
 
 public class MapActivity extends AppCompatActivity {
 
@@ -29,116 +30,156 @@ public class MapActivity extends AppCompatActivity {
         switch (_state) {
             case "Andhra Pradesh":
                 //code
-                gotoLocation(22.9734,78.6569,10);
+                gotoLocation(15.9129,79.7400,10);
                 break;
             case "Arunachal Pradesh":
                 //code
+                gotoLocation(28.2180,94.7278,10);
                 break;
             case "Assam":
-                //code
+
+                gotoLocation(26.2006,92.9376,10);
                 break;
             case "Bihar":
-                //code
+
+
+                gotoLocation(25.0961,85.3131,10);        //code
                 break;
             case "Chhattisgarh":
-                //code
+
+                gotoLocation(21.2787,81.8661,10);        //code
                 break;
             case "Goa":
-                //code
+
+                gotoLocation(15.2993,74.1240,10);          //code
                 break;
             case "Gujarat":
-                //code
+
+                gotoLocation(22.2587,71.1924,10);        //code
                 break;
             case "Haryana":
-                //code
+
+                gotoLocation(29.0588,76.0856,10);         //code
                 break;
             case "Himachal Pradesh":
-                //code
+
+                gotoLocation(31.1048,77.1734,10);        //code
                 break;
             case "Jammu and Kashmir":
-                //code
+
+                gotoLocation(33.7782,76.5762,10);        //code
                 break;
             case "Jharkhand":
+                gotoLocation(23.6102,85.2799,10);
                 //code
                 break;
             case "Karnataka":
-                //code
+
+                gotoLocation(15.3173,75.7139,10);          //code
                 break;
             case "Kerala":
-                //code
+
+                gotoLocation(10.8505,76.2711,10);         //code
                 break;
             case "Madhya Pradesh":
-                //code
+
+                gotoLocation(22.9734,78.6569,10);        //code
                 break;
             case "Maharashtra":
-                //code
+
+                gotoLocation(19.7515,75.7139,10);         //code
                 break;
             case "Manipur":
-                //code
+
+                gotoLocation(24.6637,93.9063,10);           //code
                 break;
             case "Meghalaya":
+                gotoLocation(25.4670,91.3662,10);
                 //code
                 break;
             case "Mizoram":
-                //code
+
+                gotoLocation(23.1645,92.9376,10);        //code
                 break;
             case "Nagaland":
-                //code
+
+                gotoLocation(26.1584,94.5624,10);           //code
                 break;
             case "Odisha":
-                //code
+
+                gotoLocation(20.9517,85.0985,10);         //code
                 break;
             case "Punjab":
-                //code
+
+                gotoLocation(31.1471,75.3412,10);        //code
                 break;
             case "Rajasthan":
-                //code
+
+                gotoLocation(27.0238,74.2179,10);        //code
                 break;
             case "Sikkim":
-                //code
+
+                gotoLocation(27.5330,88.5122,10);        //code
                 break;
             case "Tamil Nadu":
-                //code
+
+                gotoLocation(11.1271,78.6569,10);         //code
                 break;
             case "Telangana":
-                //code
+
+                gotoLocation(18.1124,79.0193,10);        //code
                 break;
             case "Tripura":
-                //code
+
+                gotoLocation(23.9408,91.9882,10);         //code
                 break;
             case "Uttar Pradesh":
+                gotoLocation(26.8467,80.9462,10);
                 //code
                 break;
             case "Uttarakhand":
-                //code
+
+                gotoLocation(30.0668,79.0193,10);         //code
                 break;
             case "West Bengal":
-                //code
+
+                gotoLocation(22.9868,87.8550,10);         //code
                 break;
             case "Andaman and Nicobar Islands":
-                //code
+
+                gotoLocation(11.7401,92.6586,10);         //code
                 break;
             case "Chandigarh":
-                //code
+
+                gotoLocation(30.7333,76.7794,10);         //code
                 break;
             case "Dadra and Nagar Haveli":
-                //code
+
+                gotoLocation(20.1809,73.0169,10);         //code
                 break;
             case "Daman and Diu":
-                //code
+
+                gotoLocation(20.4283,72.8397,10);         //code
                 break;
             case "Lakshadweep":
-                //code
+
+                gotoLocation(10.360,72.360,10);         //code
                 break;
             case "Delhi":
-                //code
+
+                gotoLocation(28.7041,77.1025,10);         //code
                 break;
             case "Puducherry":
-                //code
+
+                gotoLocation(11.550,79.490,10);          //code
                 break;
         }
 
+        if(_tBlood){
 
+            //retreive db and
+
+        }
 
 
     }
@@ -147,6 +188,5 @@ public class MapActivity extends AppCompatActivity {
         LatLng ll = new LatLng(lat, lng);
         CameraUpdate update = CameraUpdateFactory.newLatLngZoom(ll, Zoom);
         map.animateCamera(update);
-
     }
 }

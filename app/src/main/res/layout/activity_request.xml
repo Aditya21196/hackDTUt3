@@ -28,21 +28,21 @@
         android:id="@+id/bBlood" />
 
     <Button
-        android:text="Bone Marrow"
+        android:text="Coming Soon"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/bBoneMarrow" />
 
     <Button
-        android:text="Sperm"
+        android:text="Coming Soon"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/bSperm" />
 
     <Button
-        android:text="Hair"
+        android:text="Coming Soon"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

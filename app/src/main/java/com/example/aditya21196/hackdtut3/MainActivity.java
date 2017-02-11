@@ -20,6 +20,10 @@ public class MainActivity extends AppCompatActivity {
     public static String _PhnNo;
     public static String _state;
     public static Boolean _rBool;
+    public static Boolean _tBlood=false;
+    public static Boolean _tSperm=false;
+    public static Boolean _tMarrow=false;
+    public static Boolean _tHair=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
