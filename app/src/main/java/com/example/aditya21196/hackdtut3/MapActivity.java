@@ -6,11 +6,18 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
+import com.firebase.client.snapshot.DoubleNode;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -21,7 +28,11 @@ import static com.example.aditya21196.hackdtut3.MainActivity._tBlood;
 public class MapActivity extends AppCompatActivity {
 
     public GoogleMap map;
-
+    Firebase mRef,cRef;
+    String value;
+    int ct;
+    double dlat,dlng;
+    Map<String,String> hmap;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -178,7 +189,43 @@ public class MapActivity extends AppCompatActivity {
         if(_tBlood){
 
             //retreive db and show markers
+            cRef = new Firebase("https://hackdtut3.firebaseio.com/Users/"+_state+"/Blood/Count");
+            cRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    value = dataSnapshot.getValue(String.class);
+                    ct=Integer.parseInt(value);
+                }
 
+                @Override
+                public void onCancelled(FirebaseError firebaseError) {
+
+                }
+            });
+            mRef=new Firebase("https://hackdtut3.firebaseio.com/Users/"+_state+"/Blood/Donors");
+            mRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    hmap=dataSnapshot.getValue(Map.class);
+                }
+
+                @Override
+                public void onCancelled(FirebaseError firebaseError) {
+
+                }
+            });
+            Marker mArray[] = new Marker[ct];
+            String s="";
+            for(int i=1;i<=ct;i++){
+                s=hmap.get("i");
+                String[] str= s.split(" ");
+                dlat = Double.parseDouble(str[0]);
+                dlng = Double.parseDouble(str[1]);
+                MarkerOptions options = new MarkerOptions()
+                        .title("your destination")
+                        .position(new LatLng(dlat,dlng));
+                mArray[i-1] = map.addMarker(options);
+            }
         }
 
 

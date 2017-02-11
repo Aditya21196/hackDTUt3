@@ -24,7 +24,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -55,7 +58,9 @@ public class Request extends AppCompatActivity implements LocationListener {
     Firebase mRef;
     String UID;
     FirebaseUser user;
+    String value;
     double lati=-1,lngi;
+    int ct;
     boolean done = false;
 
 
@@ -105,6 +110,20 @@ public class Request extends AppCompatActivity implements LocationListener {
                         break;
                 }
 
+                Firebase childRef=mRef.child("Count");
+                childRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        value = dataSnapshot.getValue(String.class);
+                        ct=Integer.parseInt(value);
+                    }
+
+                    @Override
+                    public void onCancelled(FirebaseError firebaseError) {
+
+                    }
+                });
+
                 submit.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -115,11 +134,14 @@ public class Request extends AppCompatActivity implements LocationListener {
                         UID=user.getUid();
                         bGrp=String.valueOf(bloodGroupSpinner.getSelectedItem());
 
-                        mRef=new Firebase("https://hackdtut3.firebaseio.com/Users/"+"Blood/"+_state);
+                        mRef=new Firebase("https://hackdtut3.firebaseio.com/Users/"+_state+"/Blood/Donors");
                         if(lati!=-1){
-                            addChild("Latitude",Double.toString(lati));
-                            addChild("Longitude",Double.toString(lngi));
-                            addChild("UID",UID);
+                            String s=Double.toString(lati)+" "+ Double.toString(lngi);
+                            ct++;
+                            value=Integer.toString(ct);
+                            addChild(value,s);
+                            Firebase f=new Firebase("https://hackdtut3.firebaseio.com/Users/"+_state+"/Blood/Count");
+                            f.setValue(value);
                         }else{
 
                             Toast.makeText(Request.this,"Please turn on GPS to add your request",Toast.LENGTH_LONG).show();

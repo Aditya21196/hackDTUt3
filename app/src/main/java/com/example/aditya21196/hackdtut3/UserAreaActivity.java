@@ -27,13 +27,14 @@ import static com.example.aditya21196.hackdtut3.MainActivity._state;
 
 public class UserAreaActivity extends AppCompatActivity {
 
-    Button bLogout;
+
     private Firebase mRef;
     String UID;
 
     View donate;
     View request;
     View profile;
+    View logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,15 @@ public class UserAreaActivity extends AppCompatActivity {
         donate=(View)findViewById(R.id.bDonate);
         request=(View)findViewById(R.id.bRequest);
         profile=(View)findViewById(R.id.bUpdate);
+        logout=(View)findViewById(R.id.bLogout2) ;
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(UserAreaActivity.this,LoginActivity.class));
+            }
+        });
 
         donate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,17 +123,10 @@ public class UserAreaActivity extends AppCompatActivity {
         }
 
 
-        Button bLogout = (Button)findViewById(R.id.bLogOut);
 
 
 
-        bLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(UserAreaActivity.this,LoginActivity.class));
-            }
-        });
+
     }
 
     public void addChild(String key,String value){
